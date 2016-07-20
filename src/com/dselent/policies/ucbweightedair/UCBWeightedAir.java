@@ -58,6 +58,43 @@ public class UCBWeightedAir extends Policy
 			newActionMap.put(rewardFunction, air.isNewAction());
 		}
 		
+		//normalize all rewards here
+		
+		double maxUCBValue = 0.0;
+				
+		for(RewardFunction rewardFunction : ucbValuesMap.keySet())
+		{
+			Map<Action, Double> ucbValues = ucbValuesMap.get(rewardFunction);
+
+			for(Action action : ucbValues.keySet())
+			{
+				double ucbValue = ucbValues.get(action);
+						
+				if(ucbValue > maxUCBValue)
+				{
+					maxUCBValue = ucbValue;
+				}
+			}
+		}
+				
+		if(maxUCBValue > 0.0)
+		{
+			for(RewardFunction rewardFunction : ucbValuesMap.keySet())
+			{
+				Map<Action, Double> ucbValues = ucbValuesMap.get(rewardFunction);
+			
+				for(Action action : ucbValues.keySet())
+				{
+					double ucbValue = ucbValues.get(action);
+					double normalizedValue = ucbValue / maxUCBValue;
+							
+					ucbValues.replace(action, normalizedValue);
+				}
+			}
+		}
+		
+		//
+				
 		//determine if a new action should be chosen
 		
 		if(shouldChooseNewAction(unusedActionList, newActionMap, actionHistoryMap, weightMap))

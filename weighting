@@ -1,0 +1,45 @@
+import java.util.Scanner;
+import java.io.*;
+public class project{
+
+public static void main(String [] args){
+
+System.out.println("Entry number in between 1 to 4: ");
+Scanner n1 = new Scanner(System.in);
+double Entrynumber1;
+double Number_of_reward_functions1;
+double Number_of_total_samples [] = {10, 25, 50, 100, 500, 1000};
+double Reward_function1_desired_weighting;
+double Reward_function1_samples;
+double Average_reward_function ;
+
+Entrynumber1 = n1.nextDouble();
+System.out.println("Entry number is: " + Entrynumber1);//
+
+System.out.println("Enter Number of reward functions 1 to 4: ");
+Number_of_reward_functions1 =  n1.nextDouble();
+
+for (int j=0;Number_of_total_samples.length>j; j++){
+System.out.println("Total number of samples are:" + Number_of_total_samples[j]);}
+
+System.out.println("Enter reward function1 desired weighting: ");
+
+for(double i=1;Number_of_reward_functions1>=i ;i++){
+Reward_function1_desired_weighting = n1.nextDouble();
+
+}
+
+System.out.println("Enter reward function1 samples: ");
+for(double i=1;Number_of_reward_functions1>=i ;i++){
+Reward_function1_samples = n1.nextDouble();
+
+System.out.println("Average reward is: " + Number_of_reward_functions1);
+}
+
+
+
+}
+
+
+
+}
